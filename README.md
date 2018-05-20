@@ -5,6 +5,10 @@ To test sending transactions in threads
 - Stake more in CPU bandwidth
 - run start.sh
 
+# Dependencies 
+apt install bc
+apt install jq
+
 All failed transactions will be saved to log.
 
 config.json parametrs
