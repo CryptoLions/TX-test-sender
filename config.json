@@ -7,14 +7,14 @@
  "txmemo": "Jungle Stress Test",
 
  "workers": "5",
- "jobs_per_worker": "2000",
+ "jobs_per_worker": "200",
 
 
- "walletAddr": "127.0.0.1:55553",
+ "walletAddr": "127.0.0.1:8889",
 
- "nodes": [ "127.0.0.1:48888", "127.0.0.1:38888", "127.0.0.1:28888" ],
+ "nodes": [ "127.0.0.1:18888", "127.0.0.1:28888", "127.0.0.1:38888" ],
 
- "unlock_wallet": "PW5K3df2r9B72An1JH4NoG6EzKzmZJm1MZAdo6XXgFtFy95zbdok3",
+ "unlock_wallet_pass": "",
 
  "test": "1"
 }
