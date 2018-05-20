@@ -5,6 +5,7 @@ To test sending transactions in threads
 - Stake more in CPU bandwidth
 - run start.sh
 
+All failed transactions will be saved to log.
 
 config.json parametrs
 

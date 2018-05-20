@@ -74,9 +74,9 @@ done
 echo "================================"
 echo "Workers: $WORKERS"
 
-echo "Failed Requests: $REQUEST_FAILED"
-echo "OK Requests: $REQUEST_OK"
-echo "Total Requests: "$(($REQUEST_OK+$REQUEST_FAILED))
+echo "Failed Transactions: $REQUEST_FAILED"
+echo "Good Transactions: $REQUEST_OK"
+echo "Total Transactionss: "$(($REQUEST_OK+$REQUEST_FAILED))
 
 echo "Finished."
 echo "Time: $DIFF sec."
