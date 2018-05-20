@@ -12,7 +12,7 @@
 
 config="config.json"
 WORKERS="$( jq -r '.workers' "$config" )"
-NODEOSBINDIR="$( jq -r '.eos_bld_dir' "$config" )"
+CLEOS="$( jq -r '.cleos' "$config" )"
 WALLETHOST="$( jq -r '.walletAddr' "$config" )"
 UNLOCK_WALLET="$( jq -r '.unlock_wallet' "$config" )"
 
@@ -25,7 +25,7 @@ if [[ -f error_tx.log ]]; then
 fi
 
 if [[ $UNLOCK_WALLET != "" ]]; then
-    $NODEOSBINDIR/cleos/cleos --wallet-url http://$WALLETHOST wallet unlock --password $UNLOCK_WALLET > /dev/null 2>/dev/null
+    .$CLEOS --wallet-url http://$WALLETHOST wallet unlock --password $UNLOCK_WALLET > /dev/null 2>/dev/null
 fi
 
 

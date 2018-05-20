@@ -12,7 +12,7 @@ config="config.json"
 FROM="$( jq -r '.from' "$config" )"
 LIMIT="$( jq -r '.jobs_per_worker' "$config" )"
 
-NODEOSBINDIR="$( jq -r '.eos_bld_dir' "$config" )"
+CLEOS="$( jq -r '.cleos' "$config" )"
 WALLETHOST="$( jq -r '.walletAddr' "$config" )"
 UNLOCK_WALLET="$( jq -r '.unlock_wallet' "$config" )"
 
@@ -49,7 +49,7 @@ RQ_FAILED=0
 
 #get list reg producers to use as rnd receiver
 #prods_json=$(./cleos.sh system listproducers -l 100 -j)
-prods_json=$($NODEOSBINDIR/cleos/cleos -u http://$NODEHOST --wallet-url http://$WALLETHOST system listproducers -l 100 -j)
+prods_json=$($CLEOS -u http://$NODEHOST --wallet-url http://$WALLETHOST system listproducers -l 100 -j)
 
 declare -A PRODS=()
 for row in $(echo "${prods_json}" | jq -r '.rows[] | @base64'); do
@@ -82,9 +82,9 @@ do
 
     #cmd='./cleos.sh transfer '$FROM' '$TO' "'$AMMOUNT'" "'$MEMO'" -f'
     #response=$(./cleos.sh transfer $FROM $TO "$AMMOUNT" "$MEMO" -f -j 2>&1)
-    cmd="$NODEOSBINDIR/cleos/cleos -u http://${HOSTS[$host_index]} --wallet-url http://$WALLETHOST transfer $FROM $TO \"$AMMOUNT\" \"$MEMO\" -f -j"
+    cmd="$CLEOS -u http://${HOSTS[$host_index]} --wallet-url http://$WALLETHOST transfer $FROM $TO \"$AMMOUNT\" \"$MEMO\" -f -j"
 
-    response=$($NODEOSBINDIR/cleos/cleos -u http://${HOSTS[$host_index]} --wallet-url http://$WALLETHOST transfer $FROM $TO "$AMMOUNT" "$MEMO" -f -j 2>&1)
+    response=$($CLEOS -u http://${HOSTS[$host_index]} --wallet-url http://$WALLETHOST transfer $FROM $TO "$AMMOUNT" "$MEMO" -f -j 2>&1)
 
 
     if [[ "$response" =~ "Error" ]]; then
